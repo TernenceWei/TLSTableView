@@ -1,0 +1,521 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		ABB491151C23D6C10063F3B3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB491141C23D6C10063F3B3 /* main.m */; };
+		ABB491181C23D6C10063F3B3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB491171C23D6C10063F3B3 /* AppDelegate.m */; };
+		ABB4911B1C23D6C10063F3B3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB4911A1C23D6C10063F3B3 /* ViewController.m */; };
+		ABB4911E1C23D6C10063F3B3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABB4911C1C23D6C10063F3B3 /* Main.storyboard */; };
+		ABB491201C23D6C10063F3B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABB4911F1C23D6C10063F3B3 /* Assets.xcassets */; };
+		ABB491231C23D6C10063F3B3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABB491211C23D6C10063F3B3 /* LaunchScreen.storyboard */; };
+		ABB4912E1C23D6C10063F3B3 /* TLSTableViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB4912D1C23D6C10063F3B3 /* TLSTableViewTests.m */; };
+		ABB491391C23D6C10063F3B3 /* TLSTableViewUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB491381C23D6C10063F3B3 /* TLSTableViewUITests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		ABB4912A1C23D6C10063F3B3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ABB491081C23D6C10063F3B3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = ABB4910F1C23D6C10063F3B3;
+			remoteInfo = TLSTableView;
+		};
+		ABB491351C23D6C10063F3B3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ABB491081C23D6C10063F3B3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = ABB4910F1C23D6C10063F3B3;
+			remoteInfo = TLSTableView;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		ABB491101C23D6C10063F3B3 /* TLSTableView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TLSTableView.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		ABB491141C23D6C10063F3B3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		ABB491161C23D6C10063F3B3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		ABB491171C23D6C10063F3B3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		ABB491191C23D6C10063F3B3 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		ABB4911A1C23D6C10063F3B3 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		ABB4911D1C23D6C10063F3B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		ABB4911F1C23D6C10063F3B3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		ABB491221C23D6C10063F3B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		ABB491241C23D6C10063F3B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ABB491291C23D6C10063F3B3 /* TLSTableViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TLSTableViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		ABB4912D1C23D6C10063F3B3 /* TLSTableViewTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLSTableViewTests.m; sourceTree = "<group>"; };
+		ABB4912F1C23D6C10063F3B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ABB491341C23D6C10063F3B3 /* TLSTableViewUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TLSTableViewUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		ABB491381C23D6C10063F3B3 /* TLSTableViewUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLSTableViewUITests.m; sourceTree = "<group>"; };
+		ABB4913A1C23D6C10063F3B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		ABB4910D1C23D6C10063F3B3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ABB491261C23D6C10063F3B3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ABB491311C23D6C10063F3B3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		ABB491071C23D6C10063F3B3 = {
+			isa = PBXGroup;
+			children = (
+				ABB491121C23D6C10063F3B3 /* TLSTableView */,
+				ABB4912C1C23D6C10063F3B3 /* TLSTableViewTests */,
+				ABB491371C23D6C10063F3B3 /* TLSTableViewUITests */,
+				ABB491111C23D6C10063F3B3 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		ABB491111C23D6C10063F3B3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				ABB491101C23D6C10063F3B3 /* TLSTableView.app */,
+				ABB491291C23D6C10063F3B3 /* TLSTableViewTests.xctest */,
+				ABB491341C23D6C10063F3B3 /* TLSTableViewUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		ABB491121C23D6C10063F3B3 /* TLSTableView */ = {
+			isa = PBXGroup;
+			children = (
+				ABB491161C23D6C10063F3B3 /* AppDelegate.h */,
+				ABB491171C23D6C10063F3B3 /* AppDelegate.m */,
+				ABB491191C23D6C10063F3B3 /* ViewController.h */,
+				ABB4911A1C23D6C10063F3B3 /* ViewController.m */,
+				ABB4911C1C23D6C10063F3B3 /* Main.storyboard */,
+				ABB4911F1C23D6C10063F3B3 /* Assets.xcassets */,
+				ABB491211C23D6C10063F3B3 /* LaunchScreen.storyboard */,
+				ABB491241C23D6C10063F3B3 /* Info.plist */,
+				ABB491131C23D6C10063F3B3 /* Supporting Files */,
+			);
+			path = TLSTableView;
+			sourceTree = "<group>";
+		};
+		ABB491131C23D6C10063F3B3 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				ABB491141C23D6C10063F3B3 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		ABB4912C1C23D6C10063F3B3 /* TLSTableViewTests */ = {
+			isa = PBXGroup;
+			children = (
+				ABB4912D1C23D6C10063F3B3 /* TLSTableViewTests.m */,
+				ABB4912F1C23D6C10063F3B3 /* Info.plist */,
+			);
+			path = TLSTableViewTests;
+			sourceTree = "<group>";
+		};
+		ABB491371C23D6C10063F3B3 /* TLSTableViewUITests */ = {
+			isa = PBXGroup;
+			children = (
+				ABB491381C23D6C10063F3B3 /* TLSTableViewUITests.m */,
+				ABB4913A1C23D6C10063F3B3 /* Info.plist */,
+			);
+			path = TLSTableViewUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		ABB4910F1C23D6C10063F3B3 /* TLSTableView */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ABB4913D1C23D6C10063F3B3 /* Build configuration list for PBXNativeTarget "TLSTableView" */;
+			buildPhases = (
+				ABB4910C1C23D6C10063F3B3 /* Sources */,
+				ABB4910D1C23D6C10063F3B3 /* Frameworks */,
+				ABB4910E1C23D6C10063F3B3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TLSTableView;
+			productName = TLSTableView;
+			productReference = ABB491101C23D6C10063F3B3 /* TLSTableView.app */;
+			productType = "com.apple.product-type.application";
+		};
+		ABB491281C23D6C10063F3B3 /* TLSTableViewTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ABB491401C23D6C10063F3B3 /* Build configuration list for PBXNativeTarget "TLSTableViewTests" */;
+			buildPhases = (
+				ABB491251C23D6C10063F3B3 /* Sources */,
+				ABB491261C23D6C10063F3B3 /* Frameworks */,
+				ABB491271C23D6C10063F3B3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				ABB4912B1C23D6C10063F3B3 /* PBXTargetDependency */,
+			);
+			name = TLSTableViewTests;
+			productName = TLSTableViewTests;
+			productReference = ABB491291C23D6C10063F3B3 /* TLSTableViewTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		ABB491331C23D6C10063F3B3 /* TLSTableViewUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ABB491431C23D6C10063F3B3 /* Build configuration list for PBXNativeTarget "TLSTableViewUITests" */;
+			buildPhases = (
+				ABB491301C23D6C10063F3B3 /* Sources */,
+				ABB491311C23D6C10063F3B3 /* Frameworks */,
+				ABB491321C23D6C10063F3B3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				ABB491361C23D6C10063F3B3 /* PBXTargetDependency */,
+			);
+			name = TLSTableViewUITests;
+			productName = TLSTableViewUITests;
+			productReference = ABB491341C23D6C10063F3B3 /* TLSTableViewUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		ABB491081C23D6C10063F3B3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = Leomaster;
+				TargetAttributes = {
+					ABB4910F1C23D6C10063F3B3 = {
+						CreatedOnToolsVersion = 7.2;
+					};
+					ABB491281C23D6C10063F3B3 = {
+						CreatedOnToolsVersion = 7.2;
+						TestTargetID = ABB4910F1C23D6C10063F3B3;
+					};
+					ABB491331C23D6C10063F3B3 = {
+						CreatedOnToolsVersion = 7.2;
+						TestTargetID = ABB4910F1C23D6C10063F3B3;
+					};
+				};
+			};
+			buildConfigurationList = ABB4910B1C23D6C10063F3B3 /* Build configuration list for PBXProject "TLSTableView" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = ABB491071C23D6C10063F3B3;
+			productRefGroup = ABB491111C23D6C10063F3B3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				ABB4910F1C23D6C10063F3B3 /* TLSTableView */,
+				ABB491281C23D6C10063F3B3 /* TLSTableViewTests */,
+				ABB491331C23D6C10063F3B3 /* TLSTableViewUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		ABB4910E1C23D6C10063F3B3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ABB491231C23D6C10063F3B3 /* LaunchScreen.storyboard in Resources */,
+				ABB491201C23D6C10063F3B3 /* Assets.xcassets in Resources */,
+				ABB4911E1C23D6C10063F3B3 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ABB491271C23D6C10063F3B3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ABB491321C23D6C10063F3B3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		ABB4910C1C23D6C10063F3B3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ABB4911B1C23D6C10063F3B3 /* ViewController.m in Sources */,
+				ABB491181C23D6C10063F3B3 /* AppDelegate.m in Sources */,
+				ABB491151C23D6C10063F3B3 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ABB491251C23D6C10063F3B3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ABB4912E1C23D6C10063F3B3 /* TLSTableViewTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ABB491301C23D6C10063F3B3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ABB491391C23D6C10063F3B3 /* TLSTableViewUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		ABB4912B1C23D6C10063F3B3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = ABB4910F1C23D6C10063F3B3 /* TLSTableView */;
+			targetProxy = ABB4912A1C23D6C10063F3B3 /* PBXContainerItemProxy */;
+		};
+		ABB491361C23D6C10063F3B3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = ABB4910F1C23D6C10063F3B3 /* TLSTableView */;
+			targetProxy = ABB491351C23D6C10063F3B3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		ABB4911C1C23D6C10063F3B3 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ABB4911D1C23D6C10063F3B3 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		ABB491211C23D6C10063F3B3 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ABB491221C23D6C10063F3B3 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		ABB4913B1C23D6C10063F3B3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		ABB4913C1C23D6C10063F3B3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		ABB4913E1C23D6C10063F3B3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = TLSTableView/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Leomaster.TLSTableView;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		ABB4913F1C23D6C10063F3B3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = TLSTableView/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Leomaster.TLSTableView;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		ABB491411C23D6C10063F3B3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = TLSTableViewTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Leomaster.TLSTableViewTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TLSTableView.app/TLSTableView";
+			};
+			name = Debug;
+		};
+		ABB491421C23D6C10063F3B3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = TLSTableViewTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Leomaster.TLSTableViewTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TLSTableView.app/TLSTableView";
+			};
+			name = Release;
+		};
+		ABB491441C23D6C10063F3B3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = TLSTableViewUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Leomaster.TLSTableViewUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = TLSTableView;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		ABB491451C23D6C10063F3B3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = TLSTableViewUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Leomaster.TLSTableViewUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = TLSTableView;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		ABB4910B1C23D6C10063F3B3 /* Build configuration list for PBXProject "TLSTableView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ABB4913B1C23D6C10063F3B3 /* Debug */,
+				ABB4913C1C23D6C10063F3B3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ABB4913D1C23D6C10063F3B3 /* Build configuration list for PBXNativeTarget "TLSTableView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ABB4913E1C23D6C10063F3B3 /* Debug */,
+				ABB4913F1C23D6C10063F3B3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		ABB491401C23D6C10063F3B3 /* Build configuration list for PBXNativeTarget "TLSTableViewTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ABB491411C23D6C10063F3B3 /* Debug */,
+				ABB491421C23D6C10063F3B3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		ABB491431C23D6C10063F3B3 /* Build configuration list for PBXNativeTarget "TLSTableViewUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ABB491441C23D6C10063F3B3 /* Debug */,
+				ABB491451C23D6C10063F3B3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = ABB491081C23D6C10063F3B3 /* Project object */;
+}
