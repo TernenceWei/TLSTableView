@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  TLSTabBarViewController.h
 //  TLSTableView
 //
 //  Created by Ternence on 15/12/18.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface TLSTabBarViewController : UITabBarController
 
 @end
-
