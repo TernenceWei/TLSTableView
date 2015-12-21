@@ -8,10 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "LEOBoxBasicCellConfigHeader.h"
-#import "LEOBaseNavigationController.h"
 
-
-@interface LEOBoxViewController : LEOBaseNavigationController
+@interface LEOBoxViewController : UIViewController
 @property (nonatomic, assign) LEOBoxVCType boxVCType;
-
 @end
