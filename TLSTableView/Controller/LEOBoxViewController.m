@@ -28,6 +28,9 @@
 #define KUpgradeUserAlertTag 113
 
 @interface LEOBoxViewController ()<UITableViewDataSource,UITableViewDelegate,LEOBoxBaseCellDelegate,UIAlertViewDelegate,UIGestureRecognizerDelegate,UITabBarControllerDelegate>
+@property (nonatomic, strong) UINavigationBar *navigationBar;
+@property (nonatomic, strong) UINavigationItem *titleItem;
+
 @property (nonatomic, strong) UITableView *tableView;
 /**配置文件*/
 @property (nonatomic, strong) NSMutableArray *cellConfigs;
@@ -35,11 +38,8 @@
 @property (nonatomic, strong) NSMutableArray *dataArray;
 /**当前处于编辑或新建的数据*/
 @property (nonatomic, strong) LEOSLoginInfo *saveObject;
-@property (nonatomic, strong) LEOSLoginInfo *editObject;
 @property (nonatomic, strong) LEOSMembCard *saveMemObject;
-@property (nonatomic, strong) LEOSMembCard *editMemObject;
 @property (nonatomic, strong) LEOSBankCard *saveBankObject;
-@property (nonatomic, strong) LEOSBankCard *editBankObject;
 /**放弃编辑恢复到原数据*/
 @property (nonatomic, strong) LEOSecurityBoxDataBaseObject *normalObject;
 /**用于在不同方法中传递变量*/
@@ -104,7 +104,20 @@
 #pragma mark 界面初始化
 - (void)setupNavigationBar
 {
-    [super setupNavigationBar];
+    self.navigationController.navigationBar.hidden = YES;
+    
+    self.navigationBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 64)];
+    self.navigationBar.barTintColor = C5;
+    [self.view addSubview:self.navigationBar];
+    
+    self.titleItem = [[UINavigationItem alloc] initWithTitle:NSLocalizedString(@"device monitor Bettery Percentage", nil)];
+    self.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: C4, NSFontAttributeName: T1};
+    self.titleItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"navigationBar_leftBack_blue"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
+                                                                        style:UIBarButtonItemStylePlain
+                                                                       target:self
+                                                                       action:@selector(backButtonAction)];
+    self.navigationBar.items = @[self.titleItem];
+
     NSString *title = NSLocalizedString(@"登录信息", nil);
     switch (self.boxVCType) {
         case LEOBoxVCTypeAccount:
@@ -221,7 +234,7 @@
     
     switch (self.boxVCType) {
         case LEOBoxVCTypeAccount:{
-            self.saveObject = (LEOSLoginInfo *)[[LEOSLoginInfo alloc] init];
+            self.saveObject = [[LEOSLoginInfo alloc] init];
             self.saveObject.infoType = infoType_loginInfo;
             
             break;
@@ -281,8 +294,6 @@
         alert.tag = KCancelAlertTag;
         [alert show];
     }
-
-    
 }
 
 - (void)cancelSaveEditItems{
@@ -313,71 +324,49 @@
     //获取当前焦点，收起键盘
     [self requestFirstResponder];
     
+    LEOSecurityBoxDataBaseObject *object;
+    NSString *toastMessage = NSLocalizedString(@"Mian Card Please enter card number", nil);
+    if (self.boxVCType == LEOBoxVCTypeAccount) {
+        object = self.saveObject;
+        toastMessage = NSLocalizedString(@"Mian Account Please enter card number", nil);
+    }else if (self.boxVCType == LEOBoxVCTypeMember) {
+        object = self.saveMemObject;
+    }else if (self.boxVCType == LEOBoxVCTypeBank) {
+        object = self.saveBankObject;
+    }
+    if ([self isBlankString:object.account]) {
+        
+        return;
+    }
+    if ([self isBlankString:object.title]) {
+        if (![self isBlankString:object.web_url]) {
+            object.title = [object.web_url getDomain];
+        }
+    }
     if (self.currentStatus == LEOBoxBaseCellStatusEdit) {
-        LEOSecurityBoxDataBaseObject *object;
-        NSString *toastMessage = NSLocalizedString(@"Mian Card Please enter card number", nil);
-        if (self.boxVCType == LEOBoxVCTypeAccount) {
-            object = self.editObject;
-            toastMessage = NSLocalizedString(@"Mian Account Please enter card number", nil);
-        }else if (self.boxVCType == LEOBoxVCTypeMember) {
-            object = self.editMemObject;
-        }else if (self.boxVCType == LEOBoxVCTypeBank) {
-            object = self.editBankObject;
-        }
-        if ([self isBlankString:object.account]) {//账号不能为空提示
-
-            return;
-        }
         
         [self.dataArray replaceObjectAtIndex:self.editIndexPath.section withObject:object];
         [self cellChangeToStatus:LEOBoxBaseCellStatusPreview withIndexPath:self.editIndexPath];
-        if ([self isBlankString:object.title]) {
-            if (![self isBlankString:object.web_url]) {
-                object.title = [object.web_url getDomain];
-            }
-        }
         [[LEOSDataManager sharedInstance] updateSDataWithObj:object resultBlock:^(BOOL result) {
             if (result) {
 
             }
         }];
-        
         self.currentStatus = LEOBoxBaseCellStatusPreview;
         self.previewIndexPath = self.editIndexPath;
         [self.tableView reloadData];
         [self currentItemScrollToTop:self.editIndexPath];
-        
     }else if (self.currentStatus == LEOBoxBaseCellStatusNew){
-        LEOSecurityBoxDataBaseObject *object;
-        NSString *toastMessage = NSLocalizedString(@"Mian Card Please enter card number", nil);
-        if (self.boxVCType == LEOBoxVCTypeAccount) {
-            object = self.saveObject;
-            toastMessage = NSLocalizedString(@"Mian Account Please enter card number", nil);
-        }else if (self.boxVCType == LEOBoxVCTypeMember) {
-            object = self.saveMemObject;
-        }else if (self.boxVCType == LEOBoxVCTypeBank) {
-            object = self.saveBankObject;
-        }
-        if ([self isBlankString:object.account]) {
 
-            return;
-        }
-        
         [self.dataArray insertObject:object atIndex:0];
         [self cellChangeToStatus:LEOBoxBaseCellStatusPreview withIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
         self.lastIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-        if ([self isBlankString:object.title]) {
-            if (![self isBlankString:object.web_url]) {
-                object.title = [object.web_url getDomain];
-            }
-        }
+        
         [[DataManager sharedInstance] addSData:object
                                    resultBlock:^(BOOL result, LEOSecurityBoxDataBaseObject *addedObj) {
         
             if (result) {
-
                 [self.dataArray replaceObjectAtIndex:0 withObject:addedObj];
-
             }
         }];
         
@@ -406,15 +395,12 @@
         [self.cellConfigs removeObjectAtIndex:self.deleteIndexPath.section];
 
         [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:self.deleteIndexPath.section] withRowAnimation:UITableViewRowAnimationRight];
-        CAAnimation *animation =  [self.tableView.layer animationForKey:@"bounds.origin"];
-        CFTimeInterval time =  animation.duration;
         self.currentStatus = LEOBoxBaseCellStatusNormal;
         [self navigationBarbackToNormalState];
         [[LEOSDataManager sharedInstance] deleteSDataByID:object.uid resultBlock:^(BOOL success) {
             if (success) {
 
             }
-            
         }];
 
     }
@@ -520,155 +506,86 @@
 }
 
 #pragma mark 处理点击事件
+- (void)topViewTitleAndIconChange:(LEOWebInfo *)webInfo
+{
+    if (self.boxVCType == LEOBoxVCTypeAccount) {
+        _saveObject.icon_url = webInfo.iconUrl;
+        _saveObject.title = [[DataManager sharedInstance] getDisplayNameFromWebinfo:webInfo];;
+        _saveObject.web_url = webInfo.webUrl;
+        _saveObject.domain = webInfo.domain;
+        
+    }else if (self.boxVCType == LEOBoxVCTypeMember) {
+        _saveMemObject.icon_url = webInfo.iconUrl;
+        _saveMemObject.title = [[DataManager sharedInstance] getDisplayNameFromWebinfo:webInfo];;
+        _saveMemObject.web_url = webInfo.webUrl;
+        
+    }else if (self.boxVCType == LEOBoxVCTypeBank) {
+        _saveBankObject.icon_url = webInfo.iconUrl;
+        _saveBankObject.title = [[DataManager sharedInstance] getDisplayNameFromWebinfo:webInfo];;
+        _saveBankObject.web_url = webInfo.webUrl;
+        
+    }
+}
+
 - (void)handelBlockWithConfig:(LEOBoxBasicCellConfig *)config
 {
     LEOBoxBasicCellTopViewConfig *topConfig = config.topConfig;
     topConfig.iconBlock = ^(LEOWebInfo *webInfo){
 
+        [self topViewTitleAndIconChange:webInfo];
+        LEOBoxBaseCell *cell;
         if (self.currentStatus == LEOBoxBaseCellStatusNew) {
-            LEOBoxBaseCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
-            if (self.boxVCType == LEOBoxVCTypeAccount) {
-                _saveObject.icon_url = webInfo.iconUrl;
-                _saveObject.title = [[DataManager sharedInstance] getDisplayNameFromWebinfo:webInfo];;
-                _saveObject.web_url = webInfo.webUrl;
-                _saveObject.domain = webInfo.domain;
-    
-                [self refreshConfigWithIndex:0];
-                [cell refreshAccountEditObject:_saveObject];
-                
-            }else if (self.boxVCType == LEOBoxVCTypeMember) {
-                _saveMemObject.icon_url = webInfo.iconUrl;
-                _saveMemObject.title = [[DataManager sharedInstance] getDisplayNameFromWebinfo:webInfo];;
-                _saveMemObject.web_url = webInfo.webUrl;
-                
-                [self refreshConfigWithIndex:0];
- 
-                [cell refreshMemberEditObject:_saveMemObject];
-                
-            }else if (self.boxVCType == LEOBoxVCTypeBank) {
-                _saveBankObject.icon_url = webInfo.iconUrl;
-                _saveBankObject.title = [[DataManager sharedInstance] getDisplayNameFromWebinfo:webInfo];;
-                _saveBankObject.web_url = webInfo.webUrl;
+            cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+            [self refreshConfigWithIndex:0];
 
-                [self refreshConfigWithIndex:0];
-                [cell refreshBankEditObject:_saveBankObject];
-                
-            }
-            
         }else if (self.currentStatus == LEOBoxBaseCellStatusEdit) {
-            LEOBoxBaseCell *cell = [self.tableView cellForRowAtIndexPath:self.editIndexPath];
-            if (self.boxVCType == LEOBoxVCTypeAccount) {
-                _editObject.icon_url = webInfo.iconUrl;
-                _editObject.title = [[DataManager sharedInstance] getDisplayNameFromWebinfo:webInfo];;
-                _editObject.web_url = webInfo.webUrl;
-                _editObject.domain = webInfo.domain;
-
-                [cell refreshAccountEditObject:_editObject];
-                
-            }else if (self.boxVCType == LEOBoxVCTypeMember) {
-                _editMemObject.icon_url = webInfo.iconUrl;
-                _editMemObject.title = [[DataManager sharedInstance] getDisplayNameFromWebinfo:webInfo];;
-                _editMemObject.web_url = webInfo.webUrl;
-
-                [cell refreshMemberEditObject:_editMemObject];
-                
-            }else if (self.boxVCType == LEOBoxVCTypeBank) {
-                _editBankObject.icon_url = webInfo.iconUrl;
-                _editBankObject.title = [[DataManager sharedInstance] getDisplayNameFromWebinfo:webInfo];;
-                _editBankObject.web_url = webInfo.webUrl;
-
-                [cell refreshBankEditObject:_editBankObject];
-                
-            }
+            cell = [self.tableView cellForRowAtIndexPath:self.editIndexPath];
+ 
+        }
+        if (self.boxVCType == LEOBoxVCTypeAccount) {
             
+            [cell refreshAccountEditObject:_saveObject];
+        }else if (self.boxVCType == LEOBoxVCTypeMember) {
+            
+            [cell refreshMemberEditObject:_saveMemObject];
+        }else if (self.boxVCType == LEOBoxVCTypeBank) {
+            
+            [cell refreshBankEditObject:_saveBankObject];
         }
         
     };
     topConfig.titleBlock = ^(LEOWebInfo *webInfo){
 
+        [self topViewTitleAndIconChange:webInfo];
+        LEOBoxBaseCell *cell;
         if (self.currentStatus == LEOBoxBaseCellStatusNew) {
-            LEOBoxBaseCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
-            if (self.boxVCType == LEOBoxVCTypeAccount) {
-                _saveObject.title = [[DataManager sharedInstance] getDisplayNameFromWebinfo:webInfo];;
-                _saveObject.icon_url = webInfo.iconUrl;
-                _saveObject.web_url = webInfo.webUrl;
-                _saveObject.domain = webInfo.domain;
-             
-                [self refreshConfigWithIndex:0];
-                [cell refreshAccountEditObject:_saveObject];
-                
-            }else if (self.boxVCType == LEOBoxVCTypeMember) {
-                _saveMemObject.title = [[DataManager sharedInstance] getDisplayNameFromWebinfo:webInfo];
-                _saveMemObject.icon_url = webInfo.iconUrl;
-                _saveMemObject.web_url = webInfo.webUrl;
-     
-                [self refreshConfigWithIndex:0];
-                [cell refreshMemberEditObject:_saveMemObject];
-                
-            }else if (self.boxVCType == LEOBoxVCTypeBank) {
-
-                _saveBankObject.title = [[DataManager sharedInstance] getDisplayNameFromWebinfo:webInfo];
-                _saveBankObject.icon_url = webInfo.iconUrl;
-                _saveBankObject.web_url = webInfo.webUrl;
-  
-                [self refreshConfigWithIndex:0];
-                [cell refreshBankEditObject:_saveBankObject];
-                
-            }
+            cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+            [self refreshConfigWithIndex:0];
             
         }else if (self.currentStatus == LEOBoxBaseCellStatusEdit) {
-            LEOBoxBaseCell *cell = [self.tableView cellForRowAtIndexPath:self.editIndexPath];
-            if (self.boxVCType == LEOBoxVCTypeAccount) {
-                
-                _editObject.title = [[DataManager sharedInstance] getDisplayNameFromWebinfo:webInfo];;
-                _editObject.icon_url = webInfo.iconUrl;
-                _editObject.web_url = webInfo.webUrl;
-                _editObject.domain = webInfo.domain;
-
-                [cell refreshAccountEditObject:_editObject];
-                
-            }else if (self.boxVCType == LEOBoxVCTypeMember) {
-
-                _editMemObject.title = [[DataManager sharedInstance] getDisplayNameFromWebinfo:webInfo];;
-                _editMemObject.icon_url = webInfo.iconUrl;
-                _editMemObject.web_url = webInfo.webUrl;
-
-                [cell refreshMemberEditObject:_editMemObject];
-                
-            }else if (self.boxVCType == LEOBoxVCTypeBank) {
-
-                _editBankObject.title = [[DataManager sharedInstance] getDisplayNameFromWebinfo:webInfo];;
-                _editBankObject.icon_url = webInfo.iconUrl;
-                _editBankObject.web_url = webInfo.webUrl;
-
-                [cell refreshBankEditObject:_editBankObject];
-                
-            }
-           
+            cell = [self.tableView cellForRowAtIndexPath:self.editIndexPath];
+        }
+        
+        if (self.boxVCType == LEOBoxVCTypeAccount) {
+            
+            [cell refreshAccountEditObject:_saveObject];
+        }else if (self.boxVCType == LEOBoxVCTypeMember) {
+            
+            [cell refreshMemberEditObject:_saveMemObject];
+        }else if (self.boxVCType == LEOBoxVCTypeBank) {
+            
+            [cell refreshBankEditObject:_saveBankObject];
         }
         
     };
     topConfig.textChangeBlock = ^(NSString *content, BOOL finished){
-        
-        if (self.currentStatus == LEOBoxBaseCellStatusEdit) {
-            if (self.boxVCType == LEOBoxVCTypeAccount) {
-                _editObject.title = content;
-            }else if (self.boxVCType == LEOBoxVCTypeMember) {
-                _editMemObject.title = content;
-            }else if (self.boxVCType == LEOBoxVCTypeBank) {
-                _editBankObject.title = content;
-            }
-            
-        }else if (self.currentStatus == LEOBoxBaseCellStatusNew){
-            if (self.boxVCType == LEOBoxVCTypeAccount) {
-                _saveObject.title = content;
-            }else if (self.boxVCType == LEOBoxVCTypeMember) {
-                _saveMemObject.title = content;
-            }else if (self.boxVCType == LEOBoxVCTypeBank) {
-                _saveBankObject.title = content;
-            }
+        if (self.boxVCType == LEOBoxVCTypeAccount) {
+            _saveObject.title = content;
+        }else if (self.boxVCType == LEOBoxVCTypeMember) {
+            _saveMemObject.title = content;
+        }else if (self.boxVCType == LEOBoxVCTypeBank) {
+            _saveBankObject.title = content;
         }
-
     };
     
     NSArray *itemConfigs = config.bottomConfig.itemConfigs;
@@ -684,26 +601,14 @@
                     [self scrollCurrentCellToVisiableToFill:frame additionalY:0];
                 };
                 config.dataBlock = ^(NSString *content){
-                    if (self.currentStatus == LEOBoxBaseCellStatusEdit) {
-                        
-                        if (self.boxVCType == LEOBoxVCTypeAccount) {
-                            _editObject.comment = content;
-                        }else if (self.boxVCType == LEOBoxVCTypeMember) {
-                            _editMemObject.comment = content;
-                        }else if (self.boxVCType == LEOBoxVCTypeBank) {
-                            _editBankObject.comment = content;
-                        }
-                    }else if (self.currentStatus == LEOBoxBaseCellStatusNew) {
-                        if (self.boxVCType == LEOBoxVCTypeAccount) {
-                            _saveObject.comment = content;
-                        }else if (self.boxVCType == LEOBoxVCTypeMember) {
-                            _saveMemObject.comment = content;
-                        }else if (self.boxVCType == LEOBoxVCTypeBank) {
-                            _saveBankObject.comment = content;
-                        }
-                        
+
+                    if (self.boxVCType == LEOBoxVCTypeAccount) {
+                        _saveObject.comment = content;
+                    }else if (self.boxVCType == LEOBoxVCTypeMember) {
+                        _saveMemObject.comment = content;
+                    }else if (self.boxVCType == LEOBoxVCTypeBank) {
+                        _saveBankObject.comment = content;
                     }
-                    
                 };
                 break;
             }
@@ -714,27 +619,13 @@
                 };
 
                 config.dataBlock = ^(NSString *content){
-                    
-                    if (self.currentStatus == LEOBoxBaseCellStatusEdit) {
-                        
-                        if (self.boxVCType == LEOBoxVCTypeAccount) {
-                            _editObject.web_url = content;
-                        }else if (self.boxVCType == LEOBoxVCTypeMember) {
-                            _editMemObject.web_url = content;
-                        }else if (self.boxVCType == LEOBoxVCTypeBank) {
-                            _editBankObject.web_url = content;
-                        }
-                    }else if (self.currentStatus == LEOBoxBaseCellStatusNew) {
-                        
-                        if (self.boxVCType == LEOBoxVCTypeAccount) {
-                            _saveObject.web_url = content;
-                        }else if (self.boxVCType == LEOBoxVCTypeMember) {
-                            _saveMemObject.web_url = content;
-                        }else if (self.boxVCType == LEOBoxVCTypeBank) {
-                            _saveBankObject.web_url = content;
-                        }
+                    if (self.boxVCType == LEOBoxVCTypeAccount) {
+                        _saveObject.web_url = content;
+                    }else if (self.boxVCType == LEOBoxVCTypeMember) {
+                        _saveMemObject.web_url = content;
+                    }else if (self.boxVCType == LEOBoxVCTypeBank) {
+                        _saveBankObject.web_url = content;
                     }
-                    
                 };
                 break;
             }
@@ -747,11 +638,7 @@
                 };
 
                 config.dataBlock = ^(NSString *content){
-                    if (self.currentStatus == LEOBoxBaseCellStatusNew) {
-                        _saveBankObject.account = content;
-                    }else if (self.currentStatus == LEOBoxBaseCellStatusEdit) {
-                        _editBankObject.account = content;
-                    }
+                    _saveBankObject.account = content;
                 };
                 break;
             }
@@ -762,11 +649,7 @@
                     [self scrollCurrentCellToVisiableToFill:frame additionalY:0];
                 };
                 config.dataBlock = ^(NSString *content){
-                    if (self.currentStatus == LEOBoxBaseCellStatusNew) {
-                        _saveBankObject.bankCardVVC = content;
-                    }else if (self.currentStatus == LEOBoxBaseCellStatusEdit) {
-                        _editBankObject.bankCardVVC = content;
-                    }
+                    _saveBankObject.bankCardVVC = content;
                 };
                 break;
             }
@@ -779,12 +662,8 @@
                     [self scrollCurrentCellToVisiableToFill:frame additionalY:53];
                 };
                 config.dataBlock = ^(NSString *content){
-
-                    if (self.currentStatus == LEOBoxBaseCellStatusEdit) {
-                        _editMemObject.account = content;
-                    }else if (self.currentStatus == LEOBoxBaseCellStatusNew) {
-                        _saveMemObject.account = content;
-                    }
+                    _saveMemObject.account = content;
+                    
                     
                 };
                 break;
@@ -796,11 +675,8 @@
                     [self scrollCurrentCellToVisiableToFill:frame additionalY:0];
                 };
                 config.dataBlock = ^(NSString *content){
-                    if (self.currentStatus == LEOBoxBaseCellStatusEdit) {
-                        _editMemObject.memCardPhone = content;
-                    }else if (self.currentStatus == LEOBoxBaseCellStatusNew) {
-                        _saveMemObject.memCardPhone = content;
-                    }
+                    _saveMemObject.memCardPhone = content;
+                    
                 };
                 break;
             }
@@ -811,11 +687,7 @@
                     [self scrollCurrentCellToVisiableToFill:frame additionalY:0];
                 };
                 config.dataBlock = ^(NSString *content){
-                    if (self.currentStatus == LEOBoxBaseCellStatusEdit) {
-                        _editObject.account = content;
-                    }else if (self.currentStatus == LEOBoxBaseCellStatusNew) {
-                        _saveObject.account = content;
-                    }
+                    _saveObject.account = content;
                     
                 };
                 break;
@@ -826,13 +698,7 @@
                     [self scrollCurrentCellToVisiableToFill:frame additionalY:0];
                 };
                 config.dataBlock = ^(NSString *content){
-                    if (self.currentStatus == LEOBoxBaseCellStatusEdit) {
-                        _editObject.password = content;
-                        
-                    }else if (self.currentStatus == LEOBoxBaseCellStatusNew) {
-                        _saveObject.password = content;
-
-                    }
+                    _saveObject.password = content;
                 };
                 break;
             }
@@ -916,18 +782,18 @@
 
     self.currentStatus = LEOBoxBaseCellStatusEdit;
     if (self.boxVCType == LEOBoxVCTypeAccount) {
-        self.editObject = self.dataArray[indexPath.section];
-        self.normalObject = [self.editObject copy];
+        self.saveObject = self.dataArray[indexPath.section];
+        self.normalObject = [self.saveObject copy];
         
     }else if (self.boxVCType == LEOBoxVCTypeMember) {
         
-        self.editMemObject = self.dataArray[indexPath.section];
-        LEOSMembCard *cardOjet = (LEOSMembCard *)self.editMemObject;
+        self.saveMemObject = self.dataArray[indexPath.section];
+        LEOSMembCard *cardOjet = (LEOSMembCard *)self.saveMemObject;
         self.normalObject = [cardOjet copy];
     }else if (self.boxVCType == LEOBoxVCTypeBank) {
         
-        self.editBankObject = self.dataArray[indexPath.section];
-        LEOSBankCard *cardOjet = (LEOSBankCard *)self.editBankObject;
+        self.saveBankObject = self.dataArray[indexPath.section];
+        LEOSBankCard *cardOjet = (LEOSBankCard *)self.saveBankObject;
         self.normalObject = [cardOjet copy];
     }
 

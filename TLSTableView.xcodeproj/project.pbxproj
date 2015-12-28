@@ -81,7 +81,6 @@
 		AB30A2D11C23FA9A00EEE76F /* yahoo mail@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB30A2871C23FA9A00EEE76F /* yahoo mail@2x.png */; };
 		AB30A2D21C23FA9A00EEE76F /* yahoo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB30A2881C23FA9A00EEE76F /* yahoo@2x.png */; };
 		AB30A2D31C23FA9A00EEE76F /* youtube@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB30A2891C23FA9A00EEE76F /* youtube@2x.png */; };
-		AB30A2E51C24047500EEE76F /* LEOBaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB30A2D61C24047500EEE76F /* LEOBaseNavigationController.m */; };
 		AB30A2E61C24047500EEE76F /* LEODropListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB30A2D81C24047500EEE76F /* LEODropListTableViewCell.m */; };
 		AB30A2E71C24047500EEE76F /* LEODropTableTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = AB30A2DA1C24047500EEE76F /* LEODropTableTextField.m */; };
 		AB30A2E81C24047500EEE76F /* LEOFileUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = AB30A2DC1C24047500EEE76F /* LEOFileUtil.m */; };
@@ -212,8 +211,6 @@
 		AB30A2871C23FA9A00EEE76F /* yahoo mail@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yahoo mail@2x.png"; sourceTree = "<group>"; };
 		AB30A2881C23FA9A00EEE76F /* yahoo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yahoo@2x.png"; sourceTree = "<group>"; };
 		AB30A2891C23FA9A00EEE76F /* youtube@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "youtube@2x.png"; sourceTree = "<group>"; };
-		AB30A2D51C24047500EEE76F /* LEOBaseNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEOBaseNavigationController.h; sourceTree = "<group>"; };
-		AB30A2D61C24047500EEE76F /* LEOBaseNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEOBaseNavigationController.m; sourceTree = "<group>"; };
 		AB30A2D71C24047500EEE76F /* LEODropListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEODropListTableViewCell.h; sourceTree = "<group>"; };
 		AB30A2D81C24047500EEE76F /* LEODropListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEODropListTableViewCell.m; sourceTree = "<group>"; };
 		AB30A2D91C24047500EEE76F /* LEODropTableTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEODropTableTextField.h; sourceTree = "<group>"; };
@@ -425,8 +422,6 @@
 		AB30A2D41C24047500EEE76F /* Other */ = {
 			isa = PBXGroup;
 			children = (
-				AB30A2D51C24047500EEE76F /* LEOBaseNavigationController.h */,
-				AB30A2D61C24047500EEE76F /* LEOBaseNavigationController.m */,
 				AB30A2D71C24047500EEE76F /* LEODropListTableViewCell.h */,
 				AB30A2D81C24047500EEE76F /* LEODropListTableViewCell.m */,
 				AB30A2D91C24047500EEE76F /* LEODropTableTextField.h */,
@@ -840,7 +835,6 @@
 				ABB491DE1C23E99C0063F3B3 /* FMDatabaseAdditions.m in Sources */,
 				ABB491E11C23E99C0063F3B3 /* FMResultSet.m in Sources */,
 				AB30A2E81C24047500EEE76F /* LEOFileUtil.m in Sources */,
-				AB30A2E51C24047500EEE76F /* LEOBaseNavigationController.m in Sources */,
 				AB30A2EC1C24047500EEE76F /* UITool.m in Sources */,
 				AB30A2F41C24047D00EEE76F /* TLSTabBarViewController.m in Sources */,
 				ABB491DD1C23E99C0063F3B3 /* FMDatabase.m in Sources */,

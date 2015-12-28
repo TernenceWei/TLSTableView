@@ -18,7 +18,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
     LEOBoxViewController *boxVC1 = [[LEOBoxViewController alloc] init];
     boxVC1.boxVCType = LEOBoxVCTypeAccount;
     boxVC1.title = NSLocalizedString(@"登录信息", nil);
