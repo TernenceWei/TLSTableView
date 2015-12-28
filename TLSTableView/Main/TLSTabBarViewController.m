@@ -43,6 +43,8 @@
     
     self.hidesBottomBarWhenPushed = YES;
     
+    NSString *tryString = @"justForTry";
+    
 }
 
 
